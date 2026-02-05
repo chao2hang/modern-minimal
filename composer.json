@@ -1,0 +1,20 @@
+{
+  "name": "nopj/modern-minimal",
+  "description": "Modern minimal theme for Flarum with FoF Night Mode support.",
+  "type": "flarum-extension",
+  "license": "MIT",
+  "require": {
+    "flarum/core": "*"
+  },
+  "extra": {
+    "flarum-extension": {
+      "title": "Modern Minimal",
+      "category": "theme",
+      "icon": {
+        "name": "fas fa-layer-group",
+        "backgroundColor": "#1f6feb",
+        "color": "#ffffff"
+      }
+    }
+  }
+}

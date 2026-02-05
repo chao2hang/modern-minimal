@@ -1,0 +1,329 @@
+﻿@import (css) url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap');
+
+:root {
+  & when (@config-dark-mode = false) {
+    --primary-color: #1f6feb;
+    --secondary-color: #6b7280;
+    --body-bg: #f6f7fb;
+    --body-bg-light: #ffffff;
+    --body-bg-shaded: #eef1f5;
+    --body-bg-faded: rgba(246, 247, 251, 0.92);
+    --text-color: #12151a;
+    --heading-color: #0e1116;
+    --muted-color: #6b7280;
+    --muted-more-color: #9aa2ad;
+    --control-bg: #ffffff;
+    --control-bg-light: #ffffff;
+    --control-bg-shaded: #e8edf3;
+    --control-color: #5c6470;
+    --header-bg: rgba(246, 247, 251, 0.8);
+    --header-color: #0e1116;
+    --header-control-bg: #ffffff;
+    --header-control-color: #5c6470;
+    --shadow-color: rgba(16, 24, 40, 0.12);
+    --overlay-bg: rgba(15, 23, 42, 0.55);
+    --code-bg: #f0f3f7;
+    --code-color: #0f172a;
+    --hero-bg: #ffffff;
+    --hero-color: #0f172a;
+    --usercard-bg: #ffffff;
+    --badge-bg: #1f6feb;
+    --badge-color: #ffffff;
+    --discussion-list-item-bg-hover: #f0f3f7;
+    --border-radius: 12px;
+    --mm-card-bg: #ffffff;
+    --mm-card-border: rgba(15, 23, 42, 0.08);
+    --mm-card-shadow: 0 14px 40px rgba(15, 23, 42, 0.08);
+    --mm-glow: rgba(31, 111, 235, 0.12);
+  }
+
+  & when (@config-dark-mode = true) {
+    --primary-color: #5aa2ff;
+    --secondary-color: #8b95a7;
+    --body-bg: #0f131a;
+    --body-bg-light: #141a22;
+    --body-bg-shaded: #0b0f15;
+    --body-bg-faded: rgba(15, 19, 26, 0.92);
+    --text-color: #e6eaf0;
+    --heading-color: #f6f7fb;
+    --muted-color: #a1abbb;
+    --muted-more-color: #7b8596;
+    --control-bg: #151c25;
+    --control-bg-light: #1c2430;
+    --control-bg-shaded: #0f141b;
+    --control-color: #c2c9d6;
+    --header-bg: rgba(15, 19, 26, 0.86);
+    --header-color: #f0f4ff;
+    --header-control-bg: #151c25;
+    --header-control-color: #c2c9d6;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --overlay-bg: rgba(4, 8, 12, 0.7);
+    --code-bg: #0c1117;
+    --code-color: #e6eaf0;
+    --hero-bg: #121821;
+    --hero-color: #f6f7fb;
+    --usercard-bg: #151c25;
+    --badge-bg: #5aa2ff;
+    --badge-color: #0b0f15;
+    --discussion-list-item-bg-hover: #141b24;
+    --border-radius: 12px;
+    --mm-card-bg: #151c25;
+    --mm-card-border: rgba(148, 163, 184, 0.12);
+    --mm-card-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+    --mm-glow: rgba(90, 162, 255, 0.18);
+  }
+}
+
+body {
+  font-family: "Sora", "Segoe UI", system-ui, sans-serif;
+  background-color: var(--body-bg);
+  color: var(--text-color);
+  letter-spacing: 0.01em;
+}
+
+.App {
+  min-height: 100vh;
+  background:
+    radial-gradient(1200px 600px at 12% -10%, rgba(31, 111, 235, 0.12), transparent 60%),
+    radial-gradient(900px 500px at 88% -12%, rgba(16, 185, 129, 0.1), transparent 58%),
+    var(--body-bg);
+}
+
+.App-header {
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--mm-card-border);
+  box-shadow: 0 1px 0 var(--mm-card-border);
+  backdrop-filter: blur(16px);
+}
+
+.Header-primary,
+.Header-secondary {
+  padding: 0 16px;
+}
+
+.Header-title {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.App-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px 32px;
+}
+
+.Hero {
+  background: var(--hero-bg);
+  color: var(--hero-color);
+  border: 1px solid var(--mm-card-border);
+  border-radius: ~"calc(var(--border-radius) + 2px)";
+  box-shadow: var(--mm-card-shadow);
+  padding: 24px 28px;
+  margin: 24px 0 28px;
+}
+
+.Hero-close {
+  border-radius: 999px;
+}
+
+.UserHero,
+.UserPage .Hero,
+.UserCard {
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.UserCard .darkenBackground {
+  background: transparent;
+}
+
+.UserPage .UserCard.Hero.UserHero {
+  position: relative;
+  min-height: 260px;
+  border-radius: var(--border-radius);
+  background-image: linear-gradient(
+      rgba(10, 12, 16, 0.45),
+      rgba(10, 12, 16, 0.45)
+    ),
+    var(--background-image);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  transition: min-height 0.35s ease, background-position 0.35s ease;
+}
+
+.UserCard .darkenBackground,
+.UserHero .darkenBackground,
+.UserPage .Hero .darkenBackground,
+.UserCard .container {
+  position: relative;
+  z-index: 1;
+}
+
+.UserCard .darkenBackground,
+.UserHero .darkenBackground,
+.UserPage .Hero .darkenBackground {
+  background: transparent;
+}
+
+.UserHero::before,
+.UserHero::after,
+.UserPage .Hero::before,
+.UserPage .Hero::after {
+  background: transparent;
+}
+
+.UserHero:not([style*="--background-image"]),
+.UserCard:not([style*="--background-image"]),
+.UserPage .Hero:not([style*="--background-image"]) {
+  background-color: var(--control-bg);
+}
+
+.UserPage .UserCard.Hero.UserHero:not([style*="--background-image"]) {
+  background-image: none;
+  background-attachment: scroll;
+}
+
+.DiscussionList {
+  margin: 0;
+}
+
+.DiscussionListItem {
+  background: var(--mm-card-bg);
+  border: 1px solid var(--mm-card-border);
+  border-radius: ~"calc(var(--border-radius) + 2px)";
+  box-shadow: var(--mm-card-shadow);
+  margin-bottom: 16px;
+  padding: 16px 18px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.DiscussionListItem:hover {
+  transform: translateY(-1px);
+  border-color: var(--primary-color);
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.16);
+}
+
+.DiscussionListItem-title {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.DiscussionListItem-info {
+  color: var(--muted-color);
+}
+
+.Post {
+  background: var(--mm-card-bg);
+  border: 1px solid var(--mm-card-border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--mm-card-shadow);
+}
+
+.Post-header {
+  border-bottom: 1px solid var(--mm-card-border);
+}
+
+.Post-body {
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.Post-body code {
+  background: var(--code-bg);
+  color: var(--code-color);
+  border-radius: 6px;
+}
+
+.Post-actions .Button {
+  border-radius: 999px;
+}
+
+.PostStream-item + .PostStream-item {
+  margin-top: 16px;
+}
+
+.Composer,
+.Modal,
+.Dropdown-menu {
+  background: var(--mm-card-bg);
+  border: 1px solid var(--mm-card-border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--mm-card-shadow);
+}
+
+.FormControl {
+  background: var(--control-bg);
+  border: 1px solid var(--mm-card-border);
+  border-radius: 10px;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.FormControl:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--mm-glow);
+}
+
+.Button {
+  border-radius: 10px;
+  font-weight: 500;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.Button--primary {
+  box-shadow: 0 10px 24px var(--mm-glow);
+}
+
+.Button--primary:hover {
+  transform: translateY(-1px);
+}
+
+a,
+.Button--link {
+  color: var(--link-color);
+}
+
+a:hover,
+.Button--link:hover {
+  color: var(--primary-color);
+}
+
+.TagLabel {
+  border-radius: 999px;
+  border: 1px solid var(--mm-card-border);
+  background: var(--control-bg);
+  padding: 2px 10px;
+}
+
+.TagLabel .TagLabel-text {
+  font-weight: 500;
+}
+
+.SideNav {
+  border-right: 1px solid var(--mm-card-border);
+}
+
+.NotificationList .Notification {
+  border-radius: var(--border-radius);
+}
+
+@media @phone {
+  .App-content {
+    padding: 0 12px 24px;
+  }
+
+  .Hero {
+    margin: 16px 0 18px;
+    padding: 18px;
+  }
+
+  .DiscussionListItem {
+    padding: 14px;
+  }
+
+  .Post-body {
+    font-size: 14px;
+  }
+}
