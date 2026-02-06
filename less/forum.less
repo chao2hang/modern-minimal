@@ -231,8 +231,45 @@ body {
   border-radius: var(--border-radius);
   box-shadow: var(--mm-card-shadow);
   position: relative;
-  z-index: 1;
+  z-index: auto;
   overflow: visible;
+}
+
+.Post .Dropdown {
+  position: relative;
+}
+
+.Post .Dropdown-menu {
+  position: absolute;
+  z-index: 6000;
+}
+
+.Post-actions {
+  position: relative;
+  z-index: 10;
+}
+
+.PostStream-item {
+  position: relative;
+  z-index: auto;
+  overflow: visible;
+}
+
+.Post-controls.open {
+  position: relative;
+  z-index: 20;
+}
+
+.Post-controls.open .Dropdown-menu {
+  z-index: 9999;
+}
+
+.Post-actions.openWithin {
+  z-index: 100;
+}
+
+.Post-actions.openWithin .Dropdown-menu {
+  z-index: 10000;
 }
 
 .Post-header {
@@ -280,6 +317,13 @@ body {
   box-shadow: 0 0 0 3px var(--mm-glow);
 }
 
+.TextEditor-editor:focus,
+.ComposerBody .FormControl:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(31, 111, 235, 0.25);
+}
+
 .Button {
   border-radius: 10px;
   font-weight: 500;
@@ -300,6 +344,16 @@ body {
 
 & when (@config-dark-mode = true) {
   .IndexPage-newDiscussion .Button-label {
+    color: #ffffff;
+  }
+}
+
+.SplitDropdown-button .Button-label {
+  font-weight: 600;
+}
+
+& when (@config-dark-mode = true) {
+  .SplitDropdown-button .Button-label {
     color: #ffffff;
   }
 }
@@ -338,14 +392,59 @@ a:hover,
 }
 
 .TagHero.TagHero--colored {
-  background-image: var(--tag-hero-image, none);
+  background-image: none;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
 }
 
 .TagHero.TagHero--colored[style*="--tag-hero-image"] {
-  background-color: transparent;
+  background-color: var(--hero-bg);
+  background-image: none !important;
+}
+
+.TagHero.TagHero--colored[style*="--tag-hero-image"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 12, 16, 0.35);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 1;
+}
+
+.TagHero.TagHero--colored[style*="--tag-hero-image"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--tag-hero-image);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: 0;
+}
+
+.TagHero.TagHero--colored[style*="--tag-hero-image"]:hover {
+  background-image: none !important;
+  color: #ffffff;
+}
+
+.TagHero.TagHero--colored[style*="--tag-hero-image"]:hover::before {
+  opacity: 1;
+}
+
+.TagHero.TagHero--colored[style*="--tag-hero-image"]:hover::after {
+  opacity: 1;
+}
+
+.TagHero.TagHero--colored .container,
+.TagHero.TagHero--colored .containerNarrow {
+  position: relative;
+  z-index: 2;
 }
 
 .Dropdown-menu {
