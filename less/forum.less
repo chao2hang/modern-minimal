@@ -357,6 +357,32 @@ a:hover,
   display: none;
 }
 
+.SessionDropdown {
+  position: relative;
+}
+
+.SessionDropdown .Dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: auto;
+}
+
+.Dropdown {
+  position: relative;
+}
+
+.Dropdown > .Dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+
+.Dropdown > .Dropdown-menu.Dropdown-menu--right {
+  right: 0;
+  left: auto;
+}
+
 @media @phone {
   .App-content {
     padding: 0 12px 24px;

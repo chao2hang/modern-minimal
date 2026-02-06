@@ -11,5 +11,8 @@ return [
         ->js(__DIR__.'/js/dist/forum.js'),
 
     (new Extend\ApiSerializer(TagSerializer::class))
-        ->attributes(Api\AddTagImageUrl::class),
+        ->attribute('imageUrl', function ($serializer, $model) {
+            return $model->image_url;
+        }),
+
 ];
