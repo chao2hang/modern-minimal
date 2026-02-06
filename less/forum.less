@@ -1,5 +1,4 @@
-﻿@import (css) url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap');
-
+// Note: Avoid external font imports for CN users; rely on system fonts.
 :root {
   & when (@config-dark-mode = false) {
     --primary-color: #1f6feb;
@@ -75,7 +74,7 @@
 }
 
 body {
-  font-family: "Sora", "Segoe UI", system-ui, sans-serif;
+  font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", system-ui, sans-serif;
   background-color: var(--body-bg);
   color: var(--text-color);
   letter-spacing: 0.01em;
@@ -152,6 +151,8 @@ body {
   background-repeat: no-repeat;
   background-attachment: scroll;
   transition: min-height 0.35s ease, background-position 0.35s ease;
+  color: white;
+
 }
 
 .UserCard .darkenBackground,
@@ -160,6 +161,12 @@ body {
 .UserCard .container {
   position: relative;
   z-index: 1;
+}
+
+.UserCard .container {
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .UserCard .darkenBackground,
@@ -286,6 +293,16 @@ body {
   transform: translateY(-1px);
 }
 
+.IndexPage-newDiscussion .Button-label {
+  font-weight: 600;
+}
+
+& when (@config-dark-mode = true) {
+  .IndexPage-newDiscussion .Button-label {
+    color: #ffffff;
+  }
+}
+
 a,
 .Button--link {
   color: var(--link-color);
@@ -335,11 +352,13 @@ a:hover,
   z-index: 3000;
 }
 
-.DiscussionListItem-controls {
+.DiscussionListItem > .DiscussionListItem-controls {
   position: absolute;
   top: 12px;
   right: 12px;
   z-index: 5;
+  transform: none;
+  margin: 0;
 }
 
 .DiscussionListItem:focus-within {
@@ -348,6 +367,7 @@ a:hover,
 
 .DiscussionListItem-controls .Dropdown-menu {
   position: absolute;
+  top: 100%;
   right: 0;
   left: auto;
   z-index: 5000;
@@ -397,7 +417,42 @@ a:hover,
     padding: 14px;
   }
 
+  .DiscussionListItem-controls {
+    top: 12px;
+    transform: none;
+  }
+
   .Post-body {
     font-size: 14px;
+  }
+
+  .Dropdown--select .Dropdown-menu {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: auto;
+    width: 100%;
+    max-width: 100%;
+    max-height: 70vh;
+    overflow-y: auto;
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 -18px 40px rgba(0, 0, 0, 0.28);
+  }
+
+  .App-titleControl.Dropdown--select {
+
+  }
+
+  .App-titleControl.Dropdown--select > .Dropdown-toggle {
+
+  }
+
+  .App-titleControl {
+
+  }
+  .App-content > #content > .UserPage > .container{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 }
